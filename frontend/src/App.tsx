@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import './App.css';
 import { sendMessage } from './api';
-import AgentChat from './components/AgentChat';
+import ChatInterface from './components/ChatInterface';
+import GuildRecommendation from './components/GuildRecommendation';
 
 const App: React.FC = () => {
     const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
@@ -15,9 +17,14 @@ const App: React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>AI Chat Agent</h1>
-            <AgentChat messages={messages} onSendMessage={handleSendMessage} />
+        <div className="App">
+            <header className="App-header">
+                <h1>Game Build AI Agent</h1>
+            </header>
+            <main>
+                <ChatInterface messages={messages} onSendMessage={handleSendMessage} />
+                <GuildRecommendation />
+            </main>
         </div>
     );
 };
